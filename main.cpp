@@ -6,12 +6,13 @@
 //  Copyright © 2017 Nicholas Cooke. All rights reserved.
 //
 
+//MAIN USER INTERFACE? 
 #include <iostream>
-#include "Projectile.hpp"
+#include "projectile.h"
 #include <iomanip>
 #include <cmath>
 #include <cctype>
-#include "StackChar.hpp"
+#include "stackchar.h"
 #include <cstdlib>
 
 using namespace std;

@@ -1,6 +1,9 @@
 /*
 	define macro for backslash or forward slash depending on OS
 	http://www.cplusplus.com/doc/tutorial/preprocessor/
+
+
+    REVISION COMMENTS: alternate main for file storage system
 */
 #ifdef TARGET_OS_MAC
 #define SLASH_SYMBOL '/'

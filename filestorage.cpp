@@ -1,6 +1,6 @@
 //FileStorage.cpp
 
-#include "FileStorage.h"
+#include "filestorage.h"
 #include <iostream>
 #include <string>
 using namespace std;

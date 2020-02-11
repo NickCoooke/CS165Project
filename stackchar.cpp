@@ -6,7 +6,7 @@
 //  Copyright © 2017 Nicholas Cooke. All rights reserved.
 //
 
-#include "StackChar.hpp"
+#include "stackchar.h"
 #include <iostream>
 #include <cctype>
 

@@ -6,7 +6,7 @@
 //  Copyright © 2017 Nicholas Cooke. All rights reserved.
 //
 
-#include "Projectile.hpp"
+#include "Projectile.h"
 #include <cmath>
 #include <cctype>
 #include <iostream>
