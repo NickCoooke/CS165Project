@@ -1,12 +1,18 @@
-//
 //  main.cpp
 //  ProjectileMotion
 //
 //  Created by Nicholas Cooke on 7/15/17.
-//  Copyright © 2017 Nicholas Cooke. All rights reserved.
 //
 
-//MAIN USER INTERFACE? 
+/* 
+ * This was my first attempt at creating a project using c++ objects and colaborating
+ * with a partner - NickCoooke
+ *
+ * This is a program which accepts initial velocity for an ideal projectile and calculate
+ * the distabce the it will travel. This program validates user inputs, calculates propper
+ * significant figures, and outputs the number of input and output significant figures.
+ */
+
 #include <iostream>
 #include "projectile.h"
 #include <iomanip>
@@ -17,58 +23,41 @@
 
 using namespace std;
 
-int sigfigs(char[], int);
-bool hasDot(char *, int);
+int sigfigs(char[]);
+bool hasDot(char *);
 void displayCString(char []);
 
 void getValue(Projectile&, const char);
 void input(Projectile&);
 
+
+//User interface for the program
 int main ()
 {
     Projectile object;
-    //double passValue;
-    
-    //We have no method to account for units (can just put a message in there asking for standard units...
-    //overload functions to account for height change
-    
-    //tasks
-        //Set it up so user can imput theta and initial velocity instead of 2 initail velocities
-        //Set up sigfigs
-        //set up data recording
-        //set up linked list (bod = (x position, y position, t time, structure pointer)
- 
-    //incase we want to graph later on
-// Imput Section
-    
+    //enter user input section.
     input(object);
 
-
-// Output Section
+   //enter output section. 
     cout << setprecision(object.getSigFig()) << showpoint;
     //cout.precision(object.getSigFig());
     cout << "**********Results**********";
     cout << endl << "Displacement: "<< object.calcDisplacement()
         << endl << "Max height: " <<object.calcMaxHeight() << endl
         << "SIGFIGS: " << object.getSigFig() << endl;
-    
-    //cout << "Sig Figs... \nX: " << object.getSigFigX() << endl
-    //    << "Y: " << object.getSigFigY() << endl << "Used: " << object.getSigFig() << endl ;
-    
-
-    
-    //implementing sig figs cout.percision(x) where x = the number of sig figs
-    //c-string case conversion 569
-
-    cout << endl;
 }
-//*******************************************************************************************************
+
+//Calls functions to get user input.
 void input (Projectile& object)
 {
     getValue(object, 'X');
     getValue(object, 'Y');
     object.setSigFig();
 }
+
+
+
+//Prompts user for input until input is valid. Processes and stores input
 void getValue(Projectile& object, const char Z)
 {
     int S = 16;
@@ -109,7 +98,7 @@ void getValue(Projectile& object, const char Z)
         }
     
     }
-    int passer = sigfigs(val, S);
+    int passer = sigfigs(val);
     
    // cout << fixed;
 
@@ -130,15 +119,18 @@ void getValue(Projectile& object, const char Z)
     
     
 }
-//*******************************************************************************************************
-int sigfigs(char value[], int S)
+
+
+
+//calculates significant figures for valid input.
+int sigfigs(char value[])
 {
     
     int sigFIG = 0, count = 0;
    
     
     //If the input has a "." the sigfigs =...
-    if(hasDot(value, S))
+    if(hasDot(value))
     {
        // cout << "Dot found.";
         while(value[count] != '\0')
@@ -149,12 +141,7 @@ int sigfigs(char value[], int S)
             }
             count++;
         }
-    }
-    else
-    {
-     //   cout << endl << "No dot found" << endl;
-        
-        
+    } else {
         DynCharStack stac;
         count = 0;
         //enter c string into stack
@@ -167,7 +154,6 @@ int sigfigs(char value[], int S)
             stac.push(value[count]);
             count++;
         }
-        //pop it
         
         // pop values off and check to see if they are zero (perhaps another while loop
         char catcher = 0;
@@ -192,8 +178,11 @@ int sigfigs(char value[], int S)
     }
     return sigFIG;
 }
-//*******************************************************************************************************
-bool hasDot(char array[], const int S)
+
+
+
+//helper function for sigfig(...). returns true if array contains a '.'
+bool hasDot(char array[])
 {
     int i = 0;
     bool status = false;
@@ -206,7 +195,9 @@ bool hasDot(char array[], const int S)
     }
     return status;
 }
-//*******************************************************************************************************
+
+
+//displays contents of an array
 void displayCString(char array[])
 {
     int i = 0;
@@ -217,6 +208,14 @@ void displayCString(char array[])
     }
 
 }
-//*******************************************************************************************************
 
 
+/*
+ * Ideas for future developement
+ *  -accept mass in kg and calculate force at launch and landing impact
+ *  -allow user to change the end height of the object
+ *  -incporperate bouncing and colision physics at the end
+ *  -allow user to specify a point realitive to launch opistion that exerts a consistent force 
+ *      on projectile
+ *  -incporperate with openGL and create visual of projetile 
+ */  

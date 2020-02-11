@@ -1,7 +1,7 @@
 CC=g++
 CFLAGS=-Wall -Wextra -g -c -std=c++11
 LDFLAGS=
-SOURCES=main.cpp projectile.cpp stackchar.cpp filestorage.cpp 
+SOURCES=main.cpp projectile.cpp stackchar.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=a
 

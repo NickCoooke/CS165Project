@@ -37,6 +37,7 @@ double Projectile::calcDisplacement() const
 void Projectile::inputVet(char value [], int S)
 {
 //Leading Zero
+//BUG:: once has alpha has been thrown it will always be thrown
     if (value[0] == '0')
     {
         throw LeadingZero();
@@ -53,7 +54,6 @@ void Projectile::inputVet(char value [], int S)
         {
             if (value[i] == '.')
                 pcount++;
-            //pcount++;
             if (!(value[i] == '.' || value[i] == ',' ))
             {
                 
@@ -62,7 +62,7 @@ void Projectile::inputVet(char value [], int S)
             }
         
         }
-        
+                    
     }
     if (pcount > 1)
         throw Pcount();
